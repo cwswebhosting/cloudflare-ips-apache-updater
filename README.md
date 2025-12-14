@@ -28,29 +28,32 @@ Core Capabilities
 
 SSH into your server as root and clone the repository:
 
-# Clone the repository
+Clone the repository
+```bash
 git clone [https://github.com/cwswebhosting/cloudflare-ips-apache-updater.git](https://github.com/cwswebhosting/cloudflare-ips-apache-updater.git)
 cd cloudflare-ips-apache-updater
+```
 
-# Make scripts executable
+ Make scripts executable
+```bash
 chmod +x *.sh
+```
 
-
-# 2. One-Click Setup
+ 2. One-Click Setup
 
 Run the installer to set up the script and the automatic scheduler:
-
+```bash
 sudo ./install.sh
-
+```
 
 That's it! Your server is now configured to see real IPs.
 
-# 🛠 Manual Usage
+ 🛠 Manual Usage
 
 If you prefer to run the update manually or debug the output:
-
+```bash
 sudo ./update_ip.sh
-
+```
 
 # ✅ Verification & Troubleshooting
 
@@ -59,8 +62,9 @@ Use these commands to verify the installation on your VPS or Dedicated Server.
 1. Verify Module Status
 
 Check if mod_remoteip is loaded in Apache.
-
+```bash
 httpd -M | grep remoteip
+```
  Expected Output: remoteip_module (shared)
 
 
@@ -68,7 +72,9 @@ httpd -M | grep remoteip
 
 Ensure the configuration file exists and contains IPs.
 
+```bash
 cat /etc/httpd/conf.d/cloudflare.conf
+```
  Should list many "RemoteIPTrustedProxy" lines
 
 
@@ -76,7 +82,9 @@ cat /etc/httpd/conf.d/cloudflare.conf
 
 Always run this before restarting the service manually.
 
+```bash
 apachectl -t
+```
  Expected Output: Syntax OK
 
 
@@ -85,18 +93,23 @@ apachectl -t
 Tail your access logs and visit your website. You should see your ISP/Home IP, not a Cloudflare IP.
 
  For standard Apache
+ 
+ ```bash
 tail -f /var/log/httpd/access_log
-
+```
  For Virtualmin users
-tail -f /var/log/virtualmin/yourdomain.com_access_log
 
+ ```bash
+tail -f /var/log/virtualmin/yourdomain.com_access_log
+```
 
 5. Verify Automation
 
 Check if the cron job is scheduled correctly.
 
+```bash
 crontab -l | grep update_cloudflare_ip
-
+```
 
 # 📋 Technical Implementation
 
