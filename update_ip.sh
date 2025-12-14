@@ -1,7 +1,7 @@
 #!/bin/bash
 # File: cloudflare-ips-apache-updater/update_ip.sh
 # Description: Fetches official Cloudflare IPs, configures mod_remoteip, and fixes Apache LogFormat.
-https://github.com/cwswebhosting
+# Author: https://github.com/cwswebhosting
 
 # --- Configuration ---
 CF_CONF_FILE="/etc/httpd/conf.d/cloudflare.conf"
