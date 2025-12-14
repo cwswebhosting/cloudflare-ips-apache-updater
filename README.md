@@ -1,8 +1,8 @@
-☁️ Apache Cloudflare Real IP Restorer
+# ☁️ Apache Cloudflare Real IP Restorer
 
 Automated Real IP Restoration for Apache on AlmaLinux 9 & Virtualmin
 
-📖 Introduction
+# 📖 Introduction
 
 A professional, lightweight bash tool designed for Linux System Administrators, Web Hosting Providers, and Virtualmin/Webmin users.
 
@@ -22,7 +22,7 @@ Core Capabilities
 
 🕒 Auto-Pilot Mode - Includes an installer that sets up a weekly Cron Job for maintenance-free operation.
 
-🚀 Quick Start
+# 🚀 Quick Start
 
 1. Installation
 
@@ -36,7 +36,7 @@ cd cloudflare-ips-apache-updater
 chmod +x *.sh
 
 
-2. One-Click Setup
+# 2. One-Click Setup
 
 Run the installer to set up the script and the automatic scheduler:
 
@@ -45,14 +45,14 @@ sudo ./install.sh
 
 That's it! Your server is now configured to see real IPs.
 
-🛠 Manual Usage
+# 🛠 Manual Usage
 
 If you prefer to run the update manually or debug the output:
 
 sudo ./update_ip.sh
 
 
-✅ Verification & Troubleshooting
+# ✅ Verification & Troubleshooting
 
 Use these commands to verify the installation on your VPS or Dedicated Server.
 
@@ -61,7 +61,7 @@ Use these commands to verify the installation on your VPS or Dedicated Server.
 Check if mod_remoteip is loaded in Apache.
 
 httpd -M | grep remoteip
-# Expected Output: remoteip_module (shared)
+ Expected Output: remoteip_module (shared)
 
 
 2. Verify Cloudflare Configuration
@@ -69,7 +69,7 @@ httpd -M | grep remoteip
 Ensure the configuration file exists and contains IPs.
 
 cat /etc/httpd/conf.d/cloudflare.conf
-# Should list many "RemoteIPTrustedProxy" lines
+ Should list many "RemoteIPTrustedProxy" lines
 
 
 3. Check Apache Syntax
@@ -77,17 +77,17 @@ cat /etc/httpd/conf.d/cloudflare.conf
 Always run this before restarting the service manually.
 
 apachectl -t
-# Expected Output: Syntax OK
+ Expected Output: Syntax OK
 
 
 4. Live Log Verification
 
 Tail your access logs and visit your website. You should see your ISP/Home IP, not a Cloudflare IP.
 
-# For standard Apache
+ For standard Apache
 tail -f /var/log/httpd/access_log
 
-# For Virtualmin users
+ For Virtualmin users
 tail -f /var/log/virtualmin/yourdomain.com_access_log
 
 
@@ -98,7 +98,7 @@ Check if the cron job is scheduled correctly.
 crontab -l | grep update_cloudflare_ip
 
 
-📋 Technical Implementation
+# 📋 Technical Implementation
 
 Why mod_remoteip?
 
@@ -120,16 +120,15 @@ From: LogFormat "%h %l %u %t ... (Logs Remote Host / Proxy)
 
 To: LogFormat "%a %l %u %t ... (Logs Client IP Address)
 
-🛡️ Security Note
+# 🛡️ Security Note
 
 This script fetches IPs from https://www.cloudflare.com/ips-v4 and ips-v6 over HTTPS to ensure the integrity of the trusted proxy list.
 
-📄 License
+# 📄 License
 MIT License - See LICENSE file for details.
 
 Made for AlmaLinux & Virtualmin Administrators
 
 Need VPS?: https://ciscowebservers.com/linux-vps-ssd-hosting-packages/
-Need Dedicated servers?: https://ciscowebservers.com/linux-dedicated-servers-hosting-packages/
 
-Made for AlmaLinux & Virtualmin Administrators
+Need Dedicated servers?: https://ciscowebservers.com/linux-dedicated-servers-hosting-packages/
