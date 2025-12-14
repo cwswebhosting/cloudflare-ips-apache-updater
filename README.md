@@ -30,7 +30,7 @@ SSH into your server as root and clone the repository:
 
 Clone the repository
 ```bash
-git clone [https://github.com/cwswebhosting/cloudflare-ips-apache-updater.git](https://github.com/cwswebhosting/cloudflare-ips-apache-updater.git)
+git clone https://github.com/cwswebhosting/cloudflare-ips-apache-updater.git
 cd cloudflare-ips-apache-updater
 ```
 
